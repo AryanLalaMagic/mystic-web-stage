@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Magical Design System - Dark, elegant theme with mystical accents
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Core Color Palette - HEX Reference (converted to HSL for Tailwind compatibility) */
+    --color-timberwolf: #DDD5D0;
+    --color-onyx: #313638;
+    --color-dark-red: #8E0D0D;
+    --color-sea-green: #5E8C61;
+    --color-tropical-indigo: #7D80DA;
+
+    /* 🎨 Professional Color Role Mapping */
+    
+    /* Main Background - Timberwolf #DDD5D0 */
+    --background: 30 17% 85%;
+    
+    /* Body Text - Onyx #313638 */
+    --foreground: 195 8% 20%;
+
+    /* Cards - White or tinted Timberwolf */
+    --card: 0 0% 100%; /* White cards */
+    --card-foreground: 195 8% 20%; /* Onyx text */
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 195 8% 20%;
+
+    /* Primary Accent - Dark Red #8E0D0D (Headlines, CTAs, Important Buttons) */
+    --primary: 0 83% 31%;
+    --primary-foreground: 30 17% 85%; /* Timberwolf text on red */
+
+    /* Secondary Accent - Sea Green #5E8C61 (Hover states, subtle CTAs) */
+    --secondary: 124 20% 46%;
+    --secondary-foreground: 0 0% 100%; /* White text on green */
+
+    /* Interactive Elements - Tropical Indigo #7D80DA (Icons, badges, hover effects) */
+    --accent: 238 59% 67%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Muted elements */
+    --muted: 30 17% 90%; /* Lighter timberwolf variation */
+    --muted-foreground: 195 8% 30%; /* Slightly lighter onyx */
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Border - Onyx at 20% opacity */
+    --border: 195 8% 20% / 0.2;
+    --input: 0 0% 100%;
+    
+    /* Focus ring - Tropical Indigo */
+    --ring: 238 59% 67%;
+
+    /* Magic color tokens for specific use cases */
+    --magic-gold: 238 59% 67%; /* Tropical Indigo - magical highlights */
+    --magic-red: 0 83% 31%; /* Dark Red - power and energy */
+    --magic-purple: 238 59% 67%; /* Tropical Indigo */
+    --magic-green: 124 20% 46%; /* Sea Green - harmony */
+    --magic-dark: 195 8% 20%; /* Onyx - footer bg */
+    --magic-darker: 195 8% 15%; /* Darker Onyx */
+    --magic-light: 30 17% 85%; /* Timberwolf - footer text on dark */
+    
+    /* Gradients */
+    --gradient-magic: linear-gradient(135deg, hsl(195, 8%, 20%), hsl(195, 8%, 15%));
+    --gradient-gold: linear-gradient(135deg, hsl(238, 59%, 67%), hsl(238, 59%, 77%));
+    --gradient-hero: linear-gradient(135deg, hsla(195, 8%, 20%, 0.85), hsla(238, 59%, 67%, 0.2));
+    
+    /* Shadows */
+    --shadow-magic: 0 25px 50px -12px hsla(238, 59%, 67%, 0.3);
+    --shadow-card: 0 10px 30px -10px hsla(195, 8%, 20%, 0.2);
+    
+    /* Animation */
+    --transition-magic: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 195 8% 20%;
+    --sidebar-primary: 0 83% 31%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 96%;
+    --sidebar-accent-foreground: 195 8% 20%;
+    --sidebar-border: 195 8% 20% / 0.2;
+    --sidebar-ring: 238 59% 67%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+}
