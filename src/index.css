@@ -8,85 +8,106 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Core Color Palette - HEX Reference (converted to HSL for Tailwind compatibility) */
-    --color-timberwolf: #DDD5D0;
-    --color-onyx: #313638;
-    --color-dark-red: #8E0D0D;
-    --color-sea-green: #5E8C61;
-    --color-tropical-indigo: #7D80DA;
-
-    /* 🎨 Professional Color Role Mapping */
+    /* 🎨 Coolors Palette Theme - Light Mode */
+    /* Palette: #313638 (Onyx), #DDD5D0 (Timberwolf), #8E0D0D (Dark Red), #5E8C61 (Sea Green), #7D80DA (Tropical Indigo) */
     
-    /* Main Background - Timberwolf #DDD5D0 */
-    --background: 30 17% 85%;
-    
-    /* Body Text - Onyx #313638 */
-    --foreground: 195 8% 20%;
-
-    /* Cards - White or tinted Timberwolf */
-    --card: 0 0% 100%; /* White cards */
+    --background: 30 17% 85%; /* Timberwolf #DDD5D0 */
+    --foreground: 195 8% 20%; /* Onyx #313638 */
+    --card: 0 0% 100%; /* White cards for contrast */
     --card-foreground: 195 8% 20%; /* Onyx text */
-
     --popover: 0 0% 100%;
     --popover-foreground: 195 8% 20%;
-
-    /* Primary Accent - Dark Red #8E0D0D (Headlines, CTAs, Important Buttons) */
-    --primary: 0 83% 31%;
+    
+    /* Primary - Dark Red for Magic Power */
+    --primary: 0 83% 31%; /* Dark Red #8E0D0D */
     --primary-foreground: 30 17% 85%; /* Timberwolf text on red */
-
-    /* Secondary Accent - Sea Green #5E8C61 (Hover states, subtle CTAs) */
-    --secondary: 124 20% 46%;
+    
+    /* Secondary - Sea Green for Harmony */
+    --secondary: 124 20% 46%; /* Sea Green #5E8C61 */
     --secondary-foreground: 0 0% 100%; /* White text on green */
-
-    /* Interactive Elements - Tropical Indigo #7D80DA (Icons, badges, hover effects) */
-    --accent: 238 59% 67%;
+    
+    /* Accent - Tropical Indigo for Magic */
+    --accent: 238 59% 67%; /* Tropical Indigo #7D80DA */
     --accent-foreground: 0 0% 100%;
-
-    /* Muted elements */
-    --muted: 30 17% 90%; /* Lighter timberwolf variation */
+    
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --muted: 30 17% 90%; /* Lighter timberwolf */
     --muted-foreground: 195 8% 30%; /* Slightly lighter onyx */
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-
-    /* Border - Onyx at 20% opacity */
-    --border: 195 8% 20% / 0.2;
+    
+    --border: 195 8% 20% / 0.2; /* Onyx with opacity */
     --input: 0 0% 100%;
+    --ring: 238 59% 67%; /* Tropical Indigo */
     
-    /* Focus ring - Tropical Indigo */
-    --ring: 238 59% 67%;
+    /* Coolors Palette Colors */
+    --coolors-onyx: 195 8% 20%; /* #313638 */
+    --coolors-timberwolf: 30 17% 85%; /* #DDD5D0 */
+    --coolors-dark-red: 0 83% 31%; /* #8E0D0D */
+    --coolors-sea-green: 124 20% 46%; /* #5E8C61 */
+    --coolors-tropical-indigo: 238 59% 67%; /* #7D80DA */
+    
+    /* Beautiful Gradients using Coolors palette */
+    --gradient-magic: linear-gradient(135deg, hsl(0, 83%, 31%), hsl(238, 59%, 67%)); /* Red to Indigo */
+    --gradient-nature: linear-gradient(135deg, hsl(124, 20%, 46%), hsl(238, 59%, 67%)); /* Green to Indigo */
+    --gradient-earth: linear-gradient(135deg, hsl(195, 8%, 20%), hsl(30, 17%, 85%)); /* Onyx to Timberwolf */
+    --gradient-hero: linear-gradient(135deg, hsla(195, 8%, 20%, 0.8), hsla(238, 59%, 67%, 0.3));
+    
+    /* Elegant Shadows */
+    --shadow-magic: 0 25px 50px -12px hsla(0, 83%, 31%, 0.25);
+    --shadow-card: 0 4px 6px -1px hsla(195, 8%, 20%, 0.1);
+    --shadow-elegant: 0 20px 25px -5px hsla(195, 8%, 20%, 0.1), 0 10px 10px -5px hsla(195, 8%, 20%, 0.04);
+    
+    --radius: 0.75rem;
+  }
 
-    /* Magic color tokens for specific use cases */
-    --magic-gold: 238 59% 67%; /* Tropical Indigo - magical highlights */
-    --magic-red: 0 83% 31%; /* Dark Red - power and energy */
-    --magic-purple: 238 59% 67%; /* Tropical Indigo */
-    --magic-green: 124 20% 46%; /* Sea Green - harmony */
-    --magic-dark: 195 8% 20%; /* Onyx - footer bg */
-    --magic-darker: 195 8% 15%; /* Darker Onyx */
-    --magic-light: 30 17% 85%; /* Timberwolf - footer text on dark */
+  .dark {
+    /* 🌙 Coolors Palette Theme - Dark Mode */
+    --background: 195 8% 20%; /* Onyx #313638 */
+    --foreground: 30 17% 85%; /* Timberwolf #DDD5D0 */
+    --card: 195 8% 15%; /* Darker than onyx */
+    --card-foreground: 30 17% 85%; /* Timberwolf text */
+    --popover: 195 8% 15%;
+    --popover-foreground: 30 17% 85%;
     
-    /* Gradients */
-    --gradient-magic: linear-gradient(135deg, hsl(195, 8%, 20%), hsl(195, 8%, 15%));
-    --gradient-gold: linear-gradient(135deg, hsl(238, 59%, 67%), hsl(238, 59%, 77%));
-    --gradient-hero: linear-gradient(135deg, hsla(195, 8%, 20%, 0.85), hsla(238, 59%, 67%, 0.2));
+    /* Primary - Brighter Red for Dark Mode */
+    --primary: 0 83% 45%; /* Brighter Dark Red */
+    --primary-foreground: 30 17% 85%; /* Timberwolf text */
     
-    /* Shadows */
-    --shadow-magic: 0 25px 50px -12px hsla(238, 59%, 67%, 0.3);
-    --shadow-card: 0 10px 30px -10px hsla(195, 8%, 20%, 0.2);
+    /* Secondary - Brighter Sea Green */
+    --secondary: 124 20% 56%; /* Brighter Sea Green */
+    --secondary-foreground: 195 8% 20%; /* Onyx text */
     
-    /* Animation */
-    --transition-magic: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 195 8% 20%;
-    --sidebar-primary: 0 83% 31%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 0 0% 96%;
-    --sidebar-accent-foreground: 195 8% 20%;
-    --sidebar-border: 195 8% 20% / 0.2;
-    --sidebar-ring: 238 59% 67%;
+    --accent: 195 8% 25%; /* Darker accent */
+    --accent-foreground: 30 17% 85%;
+    
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 30 17% 85%;
+    
+    --muted: 195 8% 25%; /* Darker muted */
+    --muted-foreground: 30 17% 70%; /* Dimmer timberwolf */
+    
+    --border: 195 8% 25%;
+    --input: 195 8% 25%;
+    --ring: 238 59% 77%; /* Brighter Tropical Indigo */
+    
+    /* Coolors Palette Colors for Dark Mode */
+    --coolors-onyx: 30 17% 85%; /* Inverted for dark mode */
+    --coolors-timberwolf: 195 8% 20%; /* Inverted for dark mode */
+    --coolors-dark-red: 0 83% 45%; /* Brighter red */
+    --coolors-sea-green: 124 20% 56%; /* Brighter green */
+    --coolors-tropical-indigo: 238 59% 77%; /* Brighter indigo */
+    
+    /* Dark mode gradients */
+    --gradient-magic: linear-gradient(135deg, hsl(0, 83%, 45%), hsl(238, 59%, 77%));
+    --gradient-nature: linear-gradient(135deg, hsl(124, 20%, 56%), hsl(238, 59%, 77%));
+    --gradient-earth: linear-gradient(135deg, hsl(195, 8%, 15%), hsl(30, 17%, 85%));
+    --gradient-hero: linear-gradient(135deg, hsla(195, 8%, 15%, 0.9), hsla(238, 59%, 77%, 0.3));
+    
+    /* Dark mode shadows */
+    --shadow-magic: 0 25px 50px -12px hsla(0, 83%, 45%, 0.3);
+    --shadow-card: 0 4px 6px -1px hsla(0, 0%, 0%, 0.3);
+    --shadow-elegant: 0 20px 25px -5px hsla(0, 0%, 0%, 0.3), 0 10px 10px -5px hsla(0, 0%, 0%, 0.2);
   }
 }
 
@@ -105,5 +126,12 @@ All colors MUST be HSL.
   
   h1, h2, h3, h4, h5, h6 {
     @apply font-serif;
+  }
+}
+
+/* 🎨 Coolors Palette Utility Classes */
+@layer utilities {
+  .shadow-elegant {
+    box-shadow: var(--shadow-elegant);
   }
 }

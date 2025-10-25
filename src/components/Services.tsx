@@ -56,61 +56,72 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="py-20 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground mb-6">
-            My <span className="text-primary">Magic Shows</span>
+    <section id="services" className="py-24 bg-muted/30">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-16 space-y-4">
+          {/* <div className="inline-flex items-center gap-2 bg-primary/10 rounded-full px-4 py-2">
+            <Sparkles className="w-4 h-4 text-primary" />
+            <span className="text-sm font-medium text-primary">Services</span>
+          </div> */}
+          
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground">
+            My <span style={{ color: 'hsl(238, 59%, 67%)' }}>Magic Shows</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            From big stage performances to entertain crowds to close-up magic to mingle with your guests. 
-            Comedy and magic ka full combination - it's all about magic!
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            From grand stage performances to intimate close-up magic. 
+            Comedy and magic ka perfect combination - it's all about creating unforgettable moments!
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <Card key={index} className="bg-card border-2 border-border hover:border-primary hover:shadow-magic transition-all duration-300 group rounded-xl overflow-hidden">
+            <Card key={index} className="bg-card border border-border hover:border-primary/50 hover:shadow-elegant transition-all duration-300 group rounded-2xl overflow-hidden h-full">
               <CardHeader className="text-center pb-4">
-                <div className="w-16 h-16 bg-gradient-gold rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                  <service.icon className="w-8 h-8 text-background" />
+                <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg" style={{ backgroundColor: index % 5 === 0 ? 'hsl(0, 83%, 31%)' : index % 5 === 1 ? 'hsl(238, 59%, 67%)' : index % 5 === 2 ? 'hsl(124, 20%, 46%)' : index % 5 === 3 ? 'hsl(195, 8%, 20%)' : 'hsl(30, 17%, 85%)', color: index % 5 === 4 ? 'hsl(195, 8%, 20%)' : 'white' }}>
+                  <service.icon className="w-8 h-8" style={{ color: index % 5 === 4 ? 'hsl(195, 8%, 20%)' : 'white' }} />
                 </div>
-                <CardTitle className="text-xl font-serif text-foreground">
+                <CardTitle className="text-xl font-serif text-foreground group-hover:text-primary transition-colors">
                   {service.title}
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent className="space-y-6 flex-1">
                 <p className="text-muted-foreground leading-relaxed">
                   {service.description}
                 </p>
                 
-                <ul className="space-y-2">
+                <ul className="space-y-3">
                   {service.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center text-sm text-muted-foreground">
-                      <Sparkles className="w-4 h-4 text-primary mr-2 flex-shrink-0" />
-                      {feature}
+                    <li key={featureIndex} className="flex items-start gap-3 text-sm text-muted-foreground">
+                      <div className="w-5 h-5 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Sparkles className="w-3 h-3 text-primary" />
+                      </div>
+                      <span>{feature}</span>
                     </li>
                   ))}
                 </ul>
                 
                 <div className="pt-4 border-t border-border">
-                  <span className="font-bold text-primary uppercase tracking-wide text-sm">
-                    {service.price}
-                  </span>
+                  <div className="bg-primary/5 rounded-lg px-4 py-3">
+                    <span className="font-semibold text-primary text-sm uppercase tracking-wide">
+                      {service.price}
+                    </span>
+                  </div>
                 </div>
               </CardContent>
             </Card>
           ))}
         </div>
 
-        <div className="text-center mt-12">
+        <div className="text-center mt-16">
           <Button
             size="lg"
-            className="bg-secondary hover:bg-secondary/90 text-secondary-foreground px-8 py-6 text-lg shadow-magic rounded-lg font-semibold transition-all duration-300 hover:scale-105"
+            className="text-white px-8 py-4 text-lg rounded-full font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+            style={{ backgroundColor: 'hsl(238, 59%, 67%)' }}
             onClick={() => {
               document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
             }}
           >
+            <Sparkles className="w-5 h-5 mr-2" />
             Get Custom Quote
           </Button>
         </div>

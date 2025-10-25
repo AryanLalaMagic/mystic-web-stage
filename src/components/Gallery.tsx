@@ -94,57 +94,71 @@ const Gallery = () => {
   ];
 
   return (
-    <section id="gallery" className="py-20 bg-card">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground mb-6">
-            Gallery of <span className="text-primary">Wonder</span>
+    <section id="gallery" className="py-24 bg-background">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-16 space-y-4">
+          {/* <div className="inline-flex items-center gap-2 bg-primary/10 rounded-full px-4 py-2">
+            <ZoomIn className="w-4 h-4 text-primary" />
+            <span className="text-sm font-medium text-primary">Gallery</span>
+          </div> */}
+          
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground">
+            Gallery of <span style={{ color: 'hsl(0, 83%, 31%)' }}>Wonder</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Take a glimpse into the magical moments I've created for clients around the world. 
             Each performance is unique, tailored to create unforgettable experiences.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {galleryItems.map((item, index) => (
             <Dialog key={item.id}>
               <DialogTrigger asChild>
                 <div 
-                  className="relative group cursor-pointer overflow-hidden rounded-xl shadow-card hover:shadow-magic transition-all duration-300 hover:scale-[1.02]"
+                  className="relative group cursor-pointer overflow-hidden rounded-2xl shadow-elegant hover:shadow-magic transition-all duration-500 hover:scale-[1.03] bg-card"
                   onClick={() => setSelectedImage(index)}
                 >
                   <img
                     src={item.src}
                     alt={item.alt}
-                    className="w-full h-64 object-cover group-hover:scale-105 group-hover:brightness-75 transition-all duration-500"
+                    className="w-full h-72 object-cover group-hover:scale-110 transition-all duration-700"
                   />
                   
+                  {/* Gradient overlay */}
+                  <div className="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-all duration-300"></div>
+                  
                   {/* Caption always visible */}
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background via-background/90 to-transparent p-4">
-                    <h3 className="text-primary font-semibold text-base">
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <h3 className="text-white font-bold text-lg drop-shadow-2xl mb-2">
                       {item.title}
                     </h3>
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-secondary rounded-full"></div>
+                      <span className="text-white/80 text-sm font-medium">
+                        {item.type === "video" ? "Video" : "Photo"}
+                      </span>
+                    </div>
                   </div>
                   
-                  {/* Hover overlay - semi-transparent */}
-                  <div className="absolute inset-0 bg-background/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-primary/40 rounded-full flex items-center justify-center mx-auto mb-3 backdrop-blur-sm shadow-lg">
+                  {/* Hover overlay */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]" style={{ backgroundColor: 'hsla(238, 59%, 67%, 0.2)' }}>
+                    <div className="text-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                      <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3 backdrop-blur-sm shadow-2xl border border-white/30 group-hover:scale-110 transition-transform duration-300">
                         {item.type === "video" ? (
-                          <Play className="w-8 h-8 text-primary" />
+                          <Play className="w-8 h-8 text-white fill-white" />
                         ) : (
-                          <ZoomIn className="w-8 h-8 text-primary" />
+                          <ZoomIn className="w-8 h-8 text-white" />
                         )}
                       </div>
-                      <span className="text-primary text-sm uppercase tracking-wide font-bold">
+                      <span className="text-white text-sm uppercase tracking-wider font-bold drop-shadow-2xl">
                         {item.type === "video" ? "Watch Video" : "View Image"}
                       </span>
                     </div>
                   </div>
                 </div>
               </DialogTrigger>
-              <DialogContent className="max-w-4xl w-full bg-magic-dark border-magic-gold">
+              <DialogContent className="max-w-4xl w-full bg-card border-border">
                 {item.type === "video" && item.videoUrl ? (
                   <div className="aspect-video">
                     <iframe
@@ -152,14 +166,14 @@ const Gallery = () => {
                       title={item.title}
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
-                      className="w-full h-full rounded-lg"
+                      className="w-full h-full rounded-xl"
                     />
                   </div>
                 ) : (
                   <img
                     src={item.src}
                     alt={item.alt}
-                    className="w-full h-auto rounded-lg"
+                    className="w-full h-auto rounded-xl"
                   />
                 )}
               </DialogContent>
@@ -167,15 +181,16 @@ const Gallery = () => {
           ))}
         </div>
 
-        <div className="text-center mt-12">
+        {/* <div className="text-center mt-16">
           <Button 
             variant="outline" 
             size="lg"
-            className="border-2 border-primary text-primary hover:bg-primary hover:text-background px-8 py-4 text-lg rounded-lg font-semibold transition-all duration-300 hover:scale-105"
+            className="border-2 border-primary/50 text-foreground hover:bg-primary hover:text-primary-foreground px-8 py-4 text-lg rounded-full font-semibold transition-all duration-300 hover:scale-105 shadow-elegant"
           >
+            <ZoomIn className="w-5 h-5 mr-2" />
             View Full Portfolio
           </Button>
-        </div>
+        </div> */}
       </div>
     </section>
   );

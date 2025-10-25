@@ -1,13 +1,13 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Check, Sparkles, Crown } from "lucide-react";
+import { Check, Sparkles, Crown, Wand2 } from "lucide-react";
 
 const Packages = () => {
   const packages = [
     {
       name: "Silver Package",
       duration: "30 minutes",
-      icon: Sparkles,
+      icon: Wand2,
       features: [
         "Interactive magic performance",
         "Audience engagement",
@@ -33,7 +33,7 @@ const Packages = () => {
     {
       name: "Platinum Package",
       duration: "1 hour",
-      icon: Crown,
+      icon: Wand2,
       features: [
         "Full magic experience",
         "Stage illusions & grand magic",
@@ -58,7 +58,7 @@ const Packages = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto mt-8">
           {packages.map((pkg, index) => (
             <Card
               key={index}
@@ -69,9 +69,12 @@ const Packages = () => {
               }`}
             >
               {pkg.badge && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <span className="bg-secondary text-secondary-foreground px-4 py-1 rounded-full text-sm font-semibold shadow-lg">
-                    {pkg.badge}
+                <div className="absolute top-1 left-1/2 transform -translate-x-1/2 z-20">
+                  <span 
+                    className="px-6 py-2 rounded-full text-sm font-bold shadow-xl text-white border-2 border-white"
+                    style={{ backgroundColor: 'hsl(0, 83%, 31%)' }}
+                  >
+                    ✨ {pkg.badge} ✨
                   </span>
                 </div>
               )}
@@ -79,10 +82,11 @@ const Packages = () => {
               <CardHeader className="text-center pb-4 pt-8">
                 <div
                   className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 ${
-                    pkg.highlight ? "bg-gradient-gold" : "bg-muted"
+                    pkg.highlight ? "" : "bg-muted"
                   }`}
+                  style={pkg.highlight ? {} : {}}
                 >
-                  <pkg.icon className={`w-8 h-8 ${pkg.highlight ? "text-magic-dark" : "text-primary"}`} />
+                  <pkg.icon className={`w-8 h-8 ${pkg.highlight ? "text-primary" : "text-primary"}`} />
                 </div>
                 <CardTitle className="text-2xl font-serif text-foreground mb-2">
                   {pkg.name}
@@ -104,11 +108,10 @@ const Packages = () => {
                 </ul>
 
                 <Button
-                  className={`w-full rounded-lg font-semibold transition-all duration-300 hover:scale-105 ${
-                    pkg.highlight
-                      ? "bg-secondary hover:bg-secondary/90 text-secondary-foreground shadow-magic"
-                      : "bg-primary hover:bg-primary/90 text-primary-foreground"
-                  }`}
+                  className="w-full rounded-lg font-semibold transition-all duration-300 hover:scale-105 text-white shadow-lg hover:shadow-xl"
+                  style={{ 
+                    backgroundColor: pkg.highlight ? 'hsl(0, 83%, 31%)' : 'hsl(238, 59%, 67%)',
+                  }}
                   size="lg"
                   onClick={() => {
                     document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
@@ -128,7 +131,20 @@ const Packages = () => {
           <Button
             variant="outline"
             size="lg"
-            className="border-2 border-primary text-primary hover:bg-primary hover:text-background rounded-lg font-semibold transition-all duration-300 hover:scale-105"
+            className="border-2 rounded-lg font-semibold transition-all duration-300 hover:scale-105 hover:text-white"
+            style={{ 
+              borderColor: 'hsl(124, 20%, 46%)', 
+              color: 'hsl(124, 20%, 46%)',
+              backgroundColor: 'transparent'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = 'hsl(124, 20%, 46%)';
+              e.currentTarget.style.color = 'white';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = 'transparent';
+              e.currentTarget.style.color = 'hsl(124, 20%, 46%)';
+            }}
             onClick={() => {
               document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
             }}
