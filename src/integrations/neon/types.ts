@@ -7,7 +7,7 @@ export interface ContactSubmission {
   event_type: string;
   event_date: string | null;
   guest_count: string | null;
-  budget: string | null;
+  plan: string | null;
   message: string | null;
   created_at: string;
 }
@@ -19,7 +19,7 @@ export interface ContactSubmissionInsert {
   event_type: string;
   event_date?: string | null;
   guest_count?: string | null;
-  budget?: string | null;
+  plan?: string | null;
   message?: string | null;
 }
 
@@ -30,7 +30,7 @@ export interface ContactSubmissionUpdate {
   event_type?: string;
   event_date?: string | null;
   guest_count?: string | null;
-  budget?: string | null;
+  plan?: string | null;
   message?: string | null;
 }
 

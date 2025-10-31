@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS contact_submissions (
   event_type TEXT NOT NULL,
   event_date DATE,
   guest_count TEXT,
-  budget TEXT,
+  plan TEXT,
   message TEXT,
   created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now()
 );
@@ -33,7 +33,7 @@ SELECT
   event_type,
   event_date,
   guest_count,
-  budget,
+  plan,
   message,
   created_at
 FROM contact_submissions

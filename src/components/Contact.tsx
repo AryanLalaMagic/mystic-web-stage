@@ -30,7 +30,7 @@ const Contact = () => {
     eventType: "",
     eventDate: "",
     guestCount: "",
-    budget: "",
+    plan: "",
     message: ""
   });
 
@@ -41,7 +41,10 @@ const Contact = () => {
     setIsSubmitting(true);
     
     try {
-      const response = await fetch('/api/contact-form', {
+      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001';
+      console.log('Attempting to submit form to:', `${API_BASE_URL}/api/contact-form`);
+      
+      const response = await fetch(`${API_BASE_URL}/api/contact-form`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -53,7 +56,7 @@ const Contact = () => {
           eventType: formData.eventType,
           eventDate: formData.eventDate,
           guestCount: formData.guestCount,
-          budget: formData.budget,
+          plan: formData.plan,
           message: formData.message,
         }),
       });
@@ -83,14 +86,14 @@ const Contact = () => {
         eventType: "",
         eventDate: "",
         guestCount: "",
-        budget: "",
+        plan: "",
         message: ""
       });
     } catch (error) {
-      console.error('Unexpected error:', error);
+      console.error('Network error:', error);
       toast({
-        title: "Error",
-        description: "Something went wrong. Please try again or contact me directly.",
+        title: "Connection Error",
+        description: "Unable to connect to server. Please check your internet connection and try again.",
         variant: "destructive",
       });
     } finally {
@@ -132,7 +135,7 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-24 bg-background">
+    <section id="contact" className="py-16 bg-background">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16 space-y-4">
           {/* <div className="inline-flex items-center gap-2 bg-primary/10 rounded-full px-4 py-2">
@@ -162,7 +165,7 @@ const Contact = () => {
               <CardContent className="space-y-6">
                 {contactInfo.map((item, index) => (
                   <div key={index} className="flex items-start space-x-4 p-4 rounded-xl hover:bg-accent/50 transition-colors duration-300">
-                    <div className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: 'hsl(0, 83%, 31%)' }}>
+                    <div className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: index <= 1 ? 'hsl(238, 59%, 67%)' : 'hsl(0, 83%, 31%)' }}>
                       <item.icon className="w-6 h-6 text-primary-foreground" />
                     </div>
                     <div>
@@ -230,7 +233,7 @@ const Contact = () => {
 
           {/* Booking Form */}
           <div className="lg:col-span-2">
-            <Card className="bg-card border border-border rounded-2xl shadow-elegant">
+            <Card className="bg-card border border-border rounded-2xl shadow-elegant relative z-10">
               <CardHeader className="pb-8">
                 <CardTitle className="text-3xl font-serif text-foreground flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: 'hsl(124, 20%, 46%)' }}>
@@ -263,7 +266,7 @@ const Contact = () => {
                         onChange={(e) => handleInputChange("email", e.target.value)}
                         required
                         className="bg-muted/50 border-border rounded-xl h-12 focus:ring-2 focus:ring-primary/20"
-                        placeholder="your.email@example.com"
+                        placeholder="email@example.com"
                       />
                     </div>
                   </div>
@@ -275,9 +278,10 @@ const Contact = () => {
                         id="phone"
                         type="tel"
                         value={formData.phone}
+                        required
                         onChange={(e) => handleInputChange("phone", e.target.value)}
                         className="bg-muted/50 border-border rounded-xl h-12 focus:ring-2 focus:ring-primary/20"
-                        placeholder="+91 98765 43210"
+                        placeholder=""
                       />
                     </div>
                     <div className="space-y-3">
@@ -286,7 +290,7 @@ const Contact = () => {
                         <SelectTrigger className="bg-muted/50 border-border rounded-xl h-12 focus:ring-2 focus:ring-primary/20">
                           <SelectValue placeholder="Select event type" />
                         </SelectTrigger>
-                        <SelectContent>
+                        <SelectContent className="z-50 bg-white dark:bg-slate-800 border border-gray-200 dark:border-gray-700 shadow-lg">
                           <SelectItem value="wedding">Wedding</SelectItem>
                           <SelectItem value="corporate">Corporate Event</SelectItem>
                           <SelectItem value="private">Private Party</SelectItem>
@@ -315,7 +319,7 @@ const Contact = () => {
                         <SelectTrigger className="bg-muted/50 border-border rounded-xl h-12 focus:ring-2 focus:ring-primary/20">
                           <SelectValue placeholder="Number of guests" />
                         </SelectTrigger>
-                        <SelectContent>
+                        <SelectContent className="z-50 bg-white dark:bg-slate-800 border border-gray-200 dark:border-gray-700 shadow-lg">
                           <SelectItem value="10-25">10-25 guests</SelectItem>
                           <SelectItem value="26-50">26-50 guests</SelectItem>
                           <SelectItem value="51-100">51-100 guests</SelectItem>
@@ -326,17 +330,17 @@ const Contact = () => {
                       </Select>
                     </div>
                     <div className="space-y-3">
-                      <Label htmlFor="budget" className="text-foreground font-semibold">Budget Range</Label>
-                      <Select onValueChange={(value) => handleInputChange("budget", value)}>
+                      <Label htmlFor="budget" className="text-foreground font-semibold">Plan</Label>
+                      <Select onValueChange={(value) => handleInputChange("plan", value)}>
                         <SelectTrigger className="bg-muted/50 border-border rounded-xl h-12 focus:ring-2 focus:ring-primary/20">
-                          <SelectValue placeholder="Budget range" />
+                          <SelectValue placeholder="Select your plan" />
                         </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="500-1000">₹10,000 - ₹15,000</SelectItem>
-                          <SelectItem value="1000-2000">₹15,000 - ₹25,000</SelectItem>
-                          <SelectItem value="2000-5000">₹25,000 - ₹35,000</SelectItem>
-                          <SelectItem value="5000+">₹35,000+</SelectItem>
-                          <SelectItem value="discuss">Prefer to discuss</SelectItem>
+                        <SelectContent className="z-50 bg-white dark:bg-slate-800 border border-gray-200 dark:border-gray-700 shadow-lg">
+                          <SelectItem value="silver">Silver Package (30 minutes)</SelectItem>
+                          <SelectItem value="gold">Gold Package (45 minutes)</SelectItem>
+                          <SelectItem value="platinum">Platinum Package (1 hour)</SelectItem>
+                          <SelectItem value="custom">Custom Package</SelectItem>
+                          <SelectItem value="discuss">Let's discuss options</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>

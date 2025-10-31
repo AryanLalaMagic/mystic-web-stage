@@ -7,7 +7,7 @@ CREATE TABLE public.contact_submissions (
   event_type TEXT NOT NULL,
   event_date DATE,
   guest_count TEXT,
-  budget TEXT,
+  plan TEXT,
   message TEXT,
   created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now()
 );

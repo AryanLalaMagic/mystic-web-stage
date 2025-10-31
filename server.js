@@ -34,7 +34,7 @@ app.post('/api/contact-form', async (req, res) => {
     const insertQuery = `
       INSERT INTO contact_submissions (
         name, email, phone, event_type, event_date, 
-        guest_count, budget, message
+        guest_count, plan, message
       ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
       RETURNING id, created_at
     `;
@@ -46,7 +46,7 @@ app.post('/api/contact-form', async (req, res) => {
       formData.eventType,
       formData.eventDate ? new Date(formData.eventDate).toISOString().split("T")[0] : null,
       formData.guestCount || null,
-      formData.budget || null,
+      formData.plan || null,
       formData.message || null,
     ];
 
@@ -71,7 +71,7 @@ app.post('/api/contact-form', async (req, res) => {
       <p><strong>Type:</strong> ${formData.eventType}</p>
       ${formData.eventDate ? `<p><strong>Date:</strong> ${formData.eventDate}</p>` : ""}
       ${formData.guestCount ? `<p><strong>Guests:</strong> ${formData.guestCount}</p>` : ""}
-      ${formData.budget ? `<p><strong>Budget:</strong> ${formData.budget}</p>` : ""}
+      ${formData.plan ? `<p><strong>Plan:</strong> ${formData.plan}</p>` : ""}
 
       ${formData.message ? `<h2>Message:</h2><p>${formData.message}</p>` : ""}
       <hr />

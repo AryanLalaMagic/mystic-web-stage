@@ -15,9 +15,16 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className="fixed top-0 w-full z-50 border-b border-[#DDD5D0]/20 backdrop-blur-xl bg-[#313638]/80 supports-[backdrop-filter]:bg-[#313638]/70 shadow-md transition-colors duration-500">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
+    <nav className="fixed top-0 w-full z-50 transition-colors duration-500">
+      <div className="container mx-auto px-4 max-w-5xl">
+        {/* Glass morphism background */}
+        <div className="absolute inset-0 backdrop-blur-2xl bg-gradient-to-r from-[#313638]/60 via-[#313638]/40 to-[#313638]/60 rounded-b-2xl border border-[#DDD5D0]/10 shadow-2xl" style={{
+          background: 'linear-gradient(135deg, rgba(49, 54, 56, 0.8) 0%, rgba(49, 54, 56, 0.6) 50%, rgba(49, 54, 56, 0.8) 100%)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
+          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.37)',
+        }}></div>
+        <div className="flex items-center justify-between h-20 relative z-10">
           {/* Logo */}
           <div className="flex items-center space-x-2">
             <Sparkles className="w-7 h-7 text-[#7D80DA]" />
@@ -68,8 +75,12 @@ const Navigation = () => {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden animate-fadeIn">
-            <div className="px-4 pt-4 pb-6 space-y-3 bg-[#313638]/95 backdrop-blur-xl border border-[#DDD5D0]/20 rounded-xl mt-4 shadow-lg">
+          <div className="md:hidden animate-fadeIn relative z-10">
+            <div className="px-4 pt-4 pb-6 space-y-3 bg-[#313638]/95 backdrop-blur-xl border border-[#DDD5D0]/20 rounded-xl mt-4 shadow-lg"
+                 style={{
+                   backdropFilter: 'blur(20px)',
+                   WebkitBackdropFilter: 'blur(20px)',
+                 }}>
               {navItems.map((item) => (
                 <a
                   key={item.href}
