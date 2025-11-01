@@ -1,3 +1,10 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://aryanlala.com/sitemap.xml
+
+# Specific crawlers
 User-agent: Googlebot
 Allow: /
 
@@ -10,5 +17,12 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
-User-agent: *
+User-agent: LinkedInBot
 Allow: /
+
+User-agent: InstagramBot
+Allow: /
+
+# Prevent crawling of certain files (if any)
+# Disallow: /admin/
+# Disallow: /private/

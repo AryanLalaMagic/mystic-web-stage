@@ -65,11 +65,11 @@ const Services = () => {
           </div> */}
           
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground">
-            My <span style={{ color: 'hsl(238, 59%, 67%)' }}>Magic Shows</span>
+            Professional <span style={{ color: 'hsl(238, 59%, 67%)' }}>Magic Show Services</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            From grand stage performances to intimate close-up magic. 
-            Comedy and magic ka perfect combination - it's all about creating unforgettable moments!
+            Book professional magician for corporate events, weddings, and birthday parties. 
+            From grand stage illusions to intimate close-up magic - hire India's top magic entertainment!
           </p>
         </div>
 

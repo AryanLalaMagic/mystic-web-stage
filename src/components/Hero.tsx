@@ -32,7 +32,7 @@ const Hero = () => {
           <div className="inline-flex items-center gap-2">
             <Wand2 className="w-5 h-5 text-[#7D80DA]" />
             <span className="font-medium text-[#DDD5D0]/95 drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)]">
-              Professional Magician & Mentalist
+              Professional Magician & Mentalist Available for Hire
             </span>
             <Sparkles className="w-5 h-5 text-[#5E8C61]" />
           </div>
@@ -44,23 +44,34 @@ const Hero = () => {
 
           {/* Subtitle */}
           <p className="text-xl md:text-2xl font-light text-[#DDD5D0]/95 drop-shadow-[0_0_10px_rgba(0,0,0,0.9)] leading-relaxed">
-            Creating{" "}
+            Book Expert{" "}
             <span className="text-[#7D80DA] font-semibold">
-              magical moments
+              Magic Shows
             </span>{" "}
-            that leave lasting impressions
+            for Corporate Events, Weddings & Parties
           </p>
 
           {/* Supporting Line */}
           <p className="text-lg md:text-xl font-light text-[#DDD5D0]/90 max-w-2xl mx-auto leading-relaxed drop-shadow-[0_1px_6px_rgba(0,0,0,0.9)]">
-            From private gatherings to corporate galas, experience live magic
-            that sparks{" "}
-            <span className="text-[#8E0D0D] font-semibold">wonder</span> and{" "}
-            <span className="text-[#5E8C61] font-semibold">connection</span>.
+            Hire professional magician for unforgettable{" "}
+            <span className="text-[#8E0D0D] font-semibold">entertainment</span>. 
+            Available across India for{" "}
+            <span className="text-[#5E8C61] font-semibold">corporate events, birthday parties, and weddings</span>.
           </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
+            <Button
+              size="lg"
+              className="bg-[#7D80DA] hover:bg-[#6B6FAF] text-white px-8 py-4 text-lg font-semibold rounded-full transition-all duration-300 hover:scale-105 shadow-lg"
+              onClick={() =>
+                document
+                  .querySelector("#contact")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
+            >
+              Book Magic Show
+            </Button>
             <Button
               variant="outline"
               size="lg"
@@ -71,7 +82,7 @@ const Hero = () => {
                   ?.scrollIntoView({ behavior: "smooth" })
               }
             >
-              View Gallery
+              View Performances
             </Button>
           </div>
 
