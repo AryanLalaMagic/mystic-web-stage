@@ -27,9 +27,8 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-20 relative z-10">
           {/* Logo */}
           <div className="flex items-center space-x-2">
-            <Sparkles className="w-7 h-7 text-[#7D80DA]" />
             <span className="text-2xl font-serif font-bold text-[#DDD5D0] tracking-wide">
-              Aryan Lala Magic
+              Shazam with Aryan
             </span>
           </div>
 
